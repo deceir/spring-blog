@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+    <div th:replace="Partials :: header"></div>
+</head>
+<body>
+<div th:replace="Partials :: navbar"></div>
+
+<div class="container">
+
+    <div th:each="post : ${listOfPosts}">
+        <h3 th:text="${post.title}" />
+        <p th:text="${post.content}" />
+    </div>
+
+</div>
+
+
+<div th:replace="Partials :: scripts"></div>
+</body>
+</html>

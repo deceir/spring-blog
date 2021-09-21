@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roll Dice</title>
+    <div th:replace="Partials :: header">
+
+    </div>
+</head>
+<body>
+<div th:replace="Partials :: navbar">
+
+</div>
+<h1>Your guess was: <span th:text="${number}">Number</span></h1>
+<h1>The correct number was: <span th:text="${correct}">Correct</span></h1>
+<div th:if="${goodguess}">
+    <h1>Good guess!</h1>
+</div>
+<div th:if="${badguess}">
+    <h1>Better luck next time!</h1>
+</div>
+<h1><a href="/roll-dice">Play again?</a></h1>
+<div th:replace="Partials :: scripts">
+
+</div>
+</body>
+</html>
