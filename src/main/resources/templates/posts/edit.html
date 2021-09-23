@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Post</title>
+    <div th:replace="Partials :: header"></div>
+</head>
+<body>
+<div th:replace="Partials :: navbar"></div>
+
+<div class="container">
+
+    <form th:action="@{'/posts/edit/' + ${post.getId()}}" method="post">
+        <input type="text" name="title" th:value="*{post.getTitle()}"><br>
+        <textarea name="description" th:text="*{post.getDescription()}"></textarea><br>
+        <input type="submit">
+
+    </form>
+</div>
+
+
+<div th:replace="Partials :: scripts"></div>
+
+</body>
+</html>

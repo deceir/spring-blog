@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete</title>
+    <div th:replace="Partials :: header"></div>
+
+</head>
+<body>
+<div th:replace="Partials :: navbar"></div>
+
+
+<form th:action="@{'/posts/delete/' + ${post.getId()}}" method="post">
+  <select name="delete">
+    <option value="1">Yes</option>
+    <option value="0">No</option>
+      <input type="submit">
+  </select>
+</form>
+<div th:replace="Partials :: scripts"></div>
+
+</body>
+</html>

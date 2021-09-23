@@ -1,12 +1,44 @@
 package com.codeup.springblog.models;
 
-public class Post {
-    private String title;
-    private String content;
+import com.codeup.springblog.daos.PostsRepository;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
-    public Post(String title, String content) {
+import javax.persistence.*;
+import java.util.List;
+import java.util.Optional;
+
+@Entity
+@Table(name = "posts")
+public class Post {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(nullable = false, length = 150)
+    private String title;
+
+    @Column(nullable = false, columnDefinition = "text")
+    private String description;
+
+    public Post() {
+    }
+
+    public Post(String title, String description) {
         this.title = title;
-        this.content = content;
+        this.description = description;
+    }
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -17,11 +49,11 @@ public class Post {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getDescription() {
+        return description;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

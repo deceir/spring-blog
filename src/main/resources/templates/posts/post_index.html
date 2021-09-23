@@ -11,8 +11,8 @@
 <div class="container">
 
     <div th:each="post : ${listOfPosts}">
-        <h3 th:text="${post.title}" />
-        <p th:text="${post.content}" />
+        <a th:href="'/posts/' + ${post.id}"><h3 th:text="${post.title}" /></a>
+        <p th:text="${post.description}" />
     </div>
 
 </div>
