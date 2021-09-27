@@ -24,6 +24,12 @@ public class Post {
     @Column(nullable = false, columnDefinition = "text")
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "poster_id")
+    private User poster;
+
+
+
     public Post() {
     }
 
@@ -55,5 +61,13 @@ public class Post {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public User getPoster() {
+        return poster;
+    }
+
+    public void setPoster(User poster) {
+        this.poster = poster;
     }
 }

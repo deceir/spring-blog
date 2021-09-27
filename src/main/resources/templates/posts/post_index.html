@@ -12,6 +12,7 @@
 
     <div th:each="post : ${listOfPosts}">
         <a th:href="'/posts/' + ${post.id}"><h3 th:text="${post.title}" /></a>
+        <p>Posted by: <span th:text="${post.poster.getUsername()}"></span></p>
         <p th:text="${post.description}" />
     </div>
 

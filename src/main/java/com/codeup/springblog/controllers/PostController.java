@@ -1,5 +1,6 @@
 package com.codeup.springblog.controllers;
 
+import com.codeup.springblog.daos.UsersRepository;
 import com.codeup.springblog.models.Post;
 import com.codeup.springblog.daos.PostsRepository;
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,12 @@ public class PostController {
 
     private final PostsRepository postDao;
 
-    public PostController(PostsRepository postDao) {
+    private final UsersRepository userDao;
+
+
+    public PostController(PostsRepository postDao, UsersRepository userDao) {
         this.postDao = postDao;
+        this.userDao = userDao;
     }
 
     @GetMapping("/posts")
@@ -33,9 +38,7 @@ public class PostController {
     public String showPostById(@PathVariable long id, Model model) {
 
         Post post = postDao.getById(id);
-        model.addAttribute("id", post.getId());
-        model.addAttribute("title", post.getTitle());
-        model.addAttribute("content", post.getDescription());
+        model.addAttribute("post", post);
 
         return "/posts/view_post";
     }
@@ -49,6 +52,8 @@ public class PostController {
     @PostMapping("/posts/create")
     public String createPostResponse(@RequestParam String title, @RequestParam String description) {
         Post post = new Post(title, description);
+
+        post.setPoster(userDao.getById(1L));
 
         postDao.save(post);
 

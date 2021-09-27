@@ -10,8 +10,10 @@
 
 <div class="container">
 
-  <h1 th:text="${title}"/>
-  <p th:text="${content}"/>
+  <h1 th:text="${post.getTitle()}"/>
+  <h4>Posted by: <span th:text="${post.getPoster().getUsername()}"></span></h4>
+  <p th:text="${post.getPoster().getEmail()}"/>
+  <p th:text="${post.getDescription()}"/>
 
 </div>
 
