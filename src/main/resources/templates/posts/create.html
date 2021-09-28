@@ -10,9 +10,10 @@
 
 <div class="container">
 
-  <form action="/posts/create" method="post">
-    <input type="text" name="title" placeholder="title"><br>
-      <textarea rows="10" cols="25" name="description" placeholder="Post content here."></textarea><br>
+  <form action="/posts/create" method="post" th:object="${post}">
+      Title:
+    <input type="text" th:field="*{title}"><br>
+      <textarea rows="10" cols="25" th:field="*{description}"></textarea><br>
     <input type="submit">
 
   </form>

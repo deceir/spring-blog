@@ -44,14 +44,16 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    public String createPost() {
+    public String createPost(Model model) {
+
+        model.addAttribute("post", new Post());
+
         return "/posts/create";
     }
 
 
     @PostMapping("/posts/create")
-    public String createPostResponse(@RequestParam String title, @RequestParam String description) {
-        Post post = new Post(title, description);
+    public String createPostResponse(@ModelAttribute Post post) {
 
         post.setPoster(userDao.getById(1L));
 
