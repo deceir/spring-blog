@@ -3,7 +3,9 @@ package com.codeup.springblog.controllers;
 import com.codeup.springblog.daos.UsersRepository;
 import com.codeup.springblog.models.Post;
 import com.codeup.springblog.daos.PostsRepository;
+import com.codeup.springblog.models.User;
 import com.codeup.springblog.services.EmailService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -59,7 +61,7 @@ public class PostController {
     @PostMapping("/posts/create")
     public String createPostResponse(@ModelAttribute Post post) {
 
-        post.setPoster(userDao.getById(1L));
+        post.setPoster((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 
         postDao.save(post);
 

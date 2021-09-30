@@ -14,7 +14,7 @@ public class EmailService {
     @Autowired
     public JavaMailSender emailSender;
 
-    @Value("${spring.mail.from")
+    @Value("${spring.mail.from}")
     private String from;
 
     public void prepareAndSend(Post post, String subject, String body) {
@@ -27,6 +27,7 @@ public class EmailService {
 
         try {
             this.emailSender.send(msg);
+            System.out.println("Email sent");
         } catch (MailException ex) {
             System.err.println(ex.getMessage());
         }
